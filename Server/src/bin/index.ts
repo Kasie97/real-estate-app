@@ -2,13 +2,13 @@ import dotenv from "dotenv"
 dotenv.config()
 import {createServer} from "node:http"
 import app from "../app"
-import { DATABASE } from "../db"
+import { connectDB } from "../db"
 
 
 
 
 const port = process.env.PORT ?? 3000
-DATABASE()
+connectDB();
 
 const server = createServer(app)
 

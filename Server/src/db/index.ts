@@ -1,21 +1,14 @@
 import mongoose from "mongoose";
 
-export const DATABASE = async () => {
+const mongodb_realEstate:any = (process.env.MONGODB_URL)
+
+mongoose.set('strictQuery', false);
+export const connectDB = async() => {
   try {
-    const connect = await mongoose.connect(
-      `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.d8bojru.mongodb.net/horizon`
-    );
-    console.log(
-      `database has been connected successfully to ${JSON.stringify(
-        connect.connection.host
-      )}`
-    );
-  } catch (error) {
-    console.log(error)
-    console.error(`Mongodb connection error ${JSON.stringify(error)}`);
-    process.exit(1);
+    const noteApp = await mongoose.connect(mongodb_realEstate);
+    console.log(`Database Connected`) 
+  }catch (error) {
+        console.log(error)
   }
-};
-
-
+}
   
